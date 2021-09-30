@@ -17,6 +17,7 @@ import {
   SearchIconWrapper,
   StyledInputBase,
 } from "../../components/SearchBar";
+import axios from "axios";
 
 // Remove once api available
 const mock_products = [
@@ -234,8 +235,10 @@ function ProductsPage() {
   const [addedProducts, setAddedProducts] = useState([]);
 
   useEffect(() => {
-    // replace this with api
-    setProducts(mock_products);
+    axios.get("http://localhost:8000/api/product").then((response) => {
+      console.log({ response });
+      setProducts(response.data);
+    });
   }, []);
 
   return (
@@ -307,6 +310,9 @@ function ProductsPage() {
                         sx={{ flexGrow: 1 }}
                         onClick={() => {
                           setAddedProducts([...addedProducts, product.id]);
+                          axios.post("http://localhost:8000/api/cart/", {
+                            item: addedProducts,
+                          });
                         }}
                       >
                         Add to cart
