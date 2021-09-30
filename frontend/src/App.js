@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className="App">
           {/* <NavBar /> */}
           <div className="container">
             {/* <Route exact path="/" component={RegisterPage} /> */}
@@ -21,7 +20,6 @@ function App() {
               )
             )} /> */}
           </div>
-        </div>
       </Router>
     </div>
   );
