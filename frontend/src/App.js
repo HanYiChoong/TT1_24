@@ -1,9 +1,9 @@
 import logo from './logo.svg';
-import Products from "./pages/products"
+import ProductsPage from "./pages/products"
 
 function App() {
   return (
-    <Products />
+    <ProductsPage />
   );
 }
 
