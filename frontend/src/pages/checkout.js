@@ -1,8 +1,8 @@
 // import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, Toolbar, Typography, position } from "@mui/material";
 
-const navbar = () => {
+const CheckoutPage = () => {
     return (
         <div>
             <AppBar position='static'>
@@ -10,7 +10,7 @@ const navbar = () => {
                     <Typography variant='h6' align='left'>
                         some stuff
                     </Typography>
-                    <Button variant='contained'>
+                    <Button variant='contained' align="right">
                         Logout
                     </Button>
                 </Toolbar>
@@ -18,29 +18,26 @@ const navbar = () => {
             <Box m={5} pt={5}>
                 Order Summary
             </Box>
-            <Box m={2} pt={3} bgcolor='#80deea' sx={{
+
+            <Box m={5} pt={5} bgcolor='#80deea' sx={{
                     width: 'auto',
                     height: 'auto',
                 }}
             >
-                
+                products appear here
+            </Box>
+
+            <Box m={5} pt={5} bgcolor='#fff9c4' sx={{
+                width: 300,
+                height: 300,
+                position: "right",
+                alignSelf: "flex-end",
+                textAlign: "center",
+            }}>
+                this is pricing stuff
             </Box>
         </div>
     )
 }
 
-const order_summary = () => {
-    return (
-        <Box bgcolor='#80deea'>
-
-        </Box>
-    )
-}
-
-function Checkout() {
-    return (
-        <navbar/>
-    );
-}
-
-export default navbar
+export default CheckoutPage
