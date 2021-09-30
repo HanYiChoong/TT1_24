@@ -201,7 +201,7 @@ const mock_products = [
 ]
 
 function ProductsPage() {
-  // const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -217,17 +217,17 @@ function ProductsPage() {
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             Name of our app
           </Typography>
-          {/* <Search>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search for a product..."
               inputProps={{ 'aria-label': 'search' }}
               value={searchValue}
               onChange={text => (setSearchValue(text.target.value))}
             />
-          </Search> */}
+          </Search>
           <Button color="inherit">Logout</Button>
           <IconButton>
             
@@ -238,7 +238,12 @@ function ProductsPage() {
       <main>
         <Container sx={{ py: 8 }} maxWidth={"xl"}>
           <Grid container spacing={4}>
-            {products.map((product) => (
+            {products.filter((product) => {
+              return (
+              searchValue ? product.title.toLowerCase().includes(searchValue.toLowerCase())
+              : product
+              )
+            }).map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={3}>
                 <Card
                   sx={{ height: '100%', width: "100%", display: 'flex', flexDirection: 'column' }}
