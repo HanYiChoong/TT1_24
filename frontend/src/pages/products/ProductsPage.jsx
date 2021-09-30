@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -12,6 +11,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
+import {Search, SearchIconWrapper, StyledInputBase} from "../../components/SearchBar"
 
 // Remove once api available
 const mock_products = [
@@ -198,7 +199,7 @@ const mock_products = [
 ]
 
 function ProductsPage() {
-  // const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -214,17 +215,17 @@ function ProductsPage() {
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             Name of our app
           </Typography>
-          {/* <Search>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Search for a product..."
               inputProps={{ 'aria-label': 'search' }}
               value={searchValue}
               onChange={text => (setSearchValue(text.target.value))}
             />
-          </Search> */}
+          </Search>
           <Link to="/cart">
             <Button color="inherit">
               Cart
@@ -235,7 +236,12 @@ function ProductsPage() {
       <main>
         <Container sx={{ py: 8 }} maxWidth={"xl"}>
           <Grid container spacing={4}>
-            {products.map((product) => (
+            {products.filter((product) => {
+              return (
+              searchValue ? product.title.toLowerCase().includes(searchValue.toLowerCase())
+              : product
+              )
+            }).map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={3}>
                 <Card
                   sx={{ height: '100%', width: "100%", display: 'flex', flexDirection: 'column' }}
