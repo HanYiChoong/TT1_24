@@ -5,9 +5,17 @@ import axios from "axios";
 
 const CheckoutPage = () => {
 
-    {/* const products = () => {
-        axios.get("http://localhost:8000/api/cart").then(response => {return response})
-    } */}
+    const prod = []
+    const total = 0
+
+    const products = () => {
+        axios.get("http://localhost:8000/api/cart").then(response => {return prod = response})
+    } 
+
+    
+    for (var i=0; i<prod.length; i++) {
+        total += prod[i]['price']
+    }
 
     return (
         <div>
@@ -26,7 +34,9 @@ const CheckoutPage = () => {
                     textAlign: 'center'
                 }}
             >
-
+                {
+                    prod.map(ing => <products text = {ing['title']}/>)
+                }
                 products appear here
             </Box>
 
@@ -36,7 +46,7 @@ const CheckoutPage = () => {
                 alignContent: "right",
                 textAlign: "center",
             }}>
-                this is pricing stuff
+                total price: {total}
             </Box>
 
             <Grid container direction="row">
