@@ -1,5 +1,4 @@
 /*jshint esversion: 6 */
-import '../App.css';
 import React, {useEffect, useState} from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -28,9 +27,8 @@ function CartPage() {
       setData(data.hits);
     };
     fetchData();
-    
-  
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
+
+    setPrice(data.reduce((partial_sum, a) => partial_sum + (data.price * data.qty), 0));
   }, []);
 
   const AppBar = styled(MuiAppBar, {
