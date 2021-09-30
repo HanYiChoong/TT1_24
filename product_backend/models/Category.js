@@ -6,7 +6,7 @@ var mongoose = require("mongoose");
 
 var CategorySchema = new mongoose.Schema(
     {
-        id: String,
+        id: Number,
         name: String,
         description: String,
         image:String,

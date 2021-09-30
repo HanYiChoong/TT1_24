@@ -1,13 +1,12 @@
 var mongoose = require("mongoose");
 var router = require("express").Router();
-
-var Product = mongoose.model("Product");
-var Category = mongoose.model("Category")
+var uuid = require("uuid");
+var Order = mongoose.model("Order");
 
 router.param("id", function (req, res, next, slug) {
     console.log("param")
     console.log(slug)
-    Product.findOne({ id: slug })
+    Order.findOne({ id: slug })
         .then(function (result) {
             if (!result) {
                 return res.sendStatus(404);
@@ -21,10 +20,8 @@ router.param("id", function (req, res, next, slug) {
 
 router.get("/", function(req, res, next){
 
-    Product.find().then(function (product){
-
-
-        return res.status(200).json(product)
+    Order.find().then(function (result){
+        return res.status(200).json(result)
     })
 });
 
@@ -34,6 +31,22 @@ router.get("/:id", function(req, res, next){
 
     return res.status(200).json(req.result)
 });
+
+router.post("/", function(req, res, next){
+    var items = req.body.items;
+    var order = new Order()
+    order.id = uuid.v4()
+    order.created_at = new Date();
+    order.status = "Pending"
+    order.items = items
+
+    order.save()
+
+    return res.status(200).json(req.result)
+});
+
+
+
 
 
 module.exports = router;

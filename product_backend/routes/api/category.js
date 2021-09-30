@@ -1,13 +1,12 @@
 var mongoose = require("mongoose");
 var router = require("express").Router();
 
-var Product = mongoose.model("Product");
-var Category = mongoose.model("Category")
+var Category = mongoose.model("Category");
 
 router.param("id", function (req, res, next, slug) {
-    console.log("param")
-    console.log(slug)
-    Product.findOne({ id: slug })
+    // console.log("param")
+    // console.log(slug)
+    Category.findOne({ id: slug })
         .then(function (result) {
             if (!result) {
                 return res.sendStatus(404);
@@ -21,10 +20,12 @@ router.param("id", function (req, res, next, slug) {
 
 router.get("/", function(req, res, next){
 
-    Product.find().then(function (product){
+    var cat = new Category();
+    cat.id = 123
+    cat.save()
 
-
-        return res.status(200).json(product)
+    Category.find().then(function (result){
+        return res.status(200).json(result)
     })
 });
 

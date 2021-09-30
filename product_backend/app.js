@@ -12,9 +12,10 @@ app.use(bodyParser.json());
 mongoose.connect("mongodb://localhost/backend")
 
 // models
-
 require('./models/Product');
-// require('./models/Order');
+require('./models/Category');
+require('./models/Order');
+
 // route
 app.use(require('./routes'));
 

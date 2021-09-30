@@ -1,6 +1,8 @@
 var router = require('express').Router();
 
 router.use('/product', require('./product'));
+router.use('/category', require('./category'));
+router.use('/order', require('./order'));
 
 router.use(function(err, req, res, next){
     if(err.name === 'ValidationError'){

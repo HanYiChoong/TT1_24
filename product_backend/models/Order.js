@@ -8,7 +8,8 @@ var OrderSchema = new mongoose.Schema(
         id: String,
         customer_id: String,
         status: String,
-        created_at: timestamps,
+        items: Array,
+        created_at: Date,
         
     },
     { timestamps: true }
