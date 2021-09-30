@@ -1,7 +1,7 @@
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register'
 import ProductsPage from "./pages/products"
-import CartContent from "./pages/Cart"
+import CartContent from "./pages/cart"
 import CheckoutPage from "./pages/checkout"
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
