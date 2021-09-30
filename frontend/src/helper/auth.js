@@ -7,9 +7,12 @@ const registerUser = (email, password) => {
             password: password
         })
         .then(response => {
-            console.log("Registered")
-            localStorage.setItem('usertoken', response.data.token)
-            return response
+            console.log({response})
+            if (!response.data.error) {
+                localStorage.setItem('usertoken', response.data.token)
+                console.log("Registered")
+            }
+            return response.data
         })
 }
 
@@ -21,7 +24,7 @@ const loginUser = (email, password) => {
         })
         .then(response => {
             localStorage.setItem('usertoken', response.data.token)
-            return response.data.token
+            return response.data
         })
         .catch(err => {
             console.log(err)

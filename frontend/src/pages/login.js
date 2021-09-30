@@ -11,11 +11,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 import { loginUser } from '../helper/auth';
-import history from '../history';
+import { useHistory } from "react-router-dom";
+
 
 const theme = createTheme();
 
 export default function SignIn() {
+    const history = useHistory();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -28,6 +31,7 @@ export default function SignIn() {
         });
 
         loginUser(email, password).then(res => {
+            console.log({res})
             if (!res.error) {
                 history.push("/")
             }
@@ -53,7 +57,7 @@ export default function SignIn() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign up
+                        Login
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>

@@ -11,11 +11,14 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 import { registerUser } from '../helper/auth';
+import { useHistory } from "react-router-dom";
 
 
 const theme = createTheme();
 
 export default function RegisterPage() {
+    const history = useHistory();
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -27,7 +30,13 @@ export default function RegisterPage() {
             password
         });
 
-        registerUser(email, password)
+        registerUser(email, password).then(res => {
+            if (res.error) {
+                alert(res.error)
+            } else {
+                history.push("/")
+            }
+        })
     };
 
     return (
