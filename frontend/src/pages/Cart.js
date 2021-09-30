@@ -14,20 +14,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function CartPage() {
   const [data, setData] = useState([]);
   let totalPrice = data.reduce((partial_sum, a) => partial_sum + (a.price * a.qty), 0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-          `https://localhost:8000/backend/api/cart`
-      );
-      const data = await response.json();
-      setData(data.hits);
-    };
-    fetchData();
+    axios.get("localhost:8000/cart/")
+      .then(response => {
+        console.log({response})
+        if (!response.data.error) {
+            setData(response.data)
+        }
+      });
   }, []);
 
   const AppBar = styled(MuiAppBar, {
@@ -152,7 +152,9 @@ function CartPage() {
                       </Typography>
                     </Grid>
                     <Grid item xs={3}>
-                      <Button onClick={setData([])}>
+                      <Button onClick={() => (
+                        setData([])
+                      )}>
                         Empty Cart <DeleteForeverIcon/>
                       </Button>
                     </Grid>
