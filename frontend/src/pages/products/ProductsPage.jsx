@@ -228,7 +228,6 @@ function ProductsPage() {
               onChange={text => (setSearchValue(text.target.value))}
             />
           </Search>
-          <Button color="inherit">Logout</Button>
           <IconButton>
             
           </IconButton>
