@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -12,8 +11,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import SearchIcon from '@mui/icons-material/Search';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import IconButton from '@mui/material/IconButton';
 import {Search, SearchIconWrapper, StyledInputBase} from "../../components/SearchBar"
 
 // Remove once api available
@@ -228,9 +225,6 @@ function ProductsPage() {
               onChange={text => (setSearchValue(text.target.value))}
             />
           </Search>
-          <IconButton>
-            
-          </IconButton>
           <Button color="inherit">Cart</Button>
         </Toolbar>
       </AppBar>

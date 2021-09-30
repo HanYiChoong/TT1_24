@@ -2,8 +2,8 @@ import LoginPage from './pages/login';
 import RegisterPage from './pages/register'
 import ProductsPage from "./pages/products"
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
-import Cart from './cart/Cart';
-import CheckoutPage from './pages/Checkout';
+import Cart from './pages/Cart';
+import CheckoutPage from './pages/checkout';  
 
 function App() {
   return (
