@@ -1,8 +1,5 @@
 var mongoose = require("mongoose");
 
-
-
-
 var ProductSchema = new mongoose.Schema(
     {
         id: Number,
@@ -14,8 +11,5 @@ var ProductSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
-
-
-
 
 mongoose.model("Product", ProductSchema);
