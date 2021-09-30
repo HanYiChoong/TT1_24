@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import '../App.css';
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
@@ -11,6 +12,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Button } from '@mui/material';
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -71,16 +73,16 @@ function CartContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
+            <Paper
                   sx={{
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     height: 240,
                   }}
-                >
+                ><Grid container spacing={3}>
+              <Grid item xs={12} md={8} lg={9}>
+                
                   <Typography component="h1"
                   variant="h6"
                   color="inherit"
@@ -89,9 +91,35 @@ function CartContent() {
                   sx={{ flexGrow: 1 }}>
                   Cart
                 </Typography>
-                </Paper>
+              </Grid>
+              <Grid item>
+                {/*Product cards*/}
+              </Grid>
+              <Grid item container spacing="inherit" direction="row">
+                {/*Total, empty cart, checkout*/}
+                <Grid item xs={6}>
+                <Typography component="h2"
+                  variant="h6"
+                  color="inherit"
+                  align="left"
+                  noWrap
+                  sx={{ flexGrow: 1 }}>
+                  Total: $
+                </Typography>
+                  </Grid>
+                    <Grid item xs={3}>
+                      <Button>
+                        Empty Cart
+                      </Button>
+                    </Grid>
+                    <Grid item xs={3}>
+                      <Button>
+                        Checkout
+                      </Button>
+                  </Grid>
               </Grid>
             </Grid>
+            </Paper>
           </Container>
         </Box>
       </Box>
