@@ -21,7 +21,7 @@ function CartPage() {
   let totalPrice = data.reduce((partial_sum, a) => partial_sum + (a.price * a.qty), 0);
 
   useEffect(() => {
-    axios.get("localhost:8000/cart/")
+    axios.get("http://localhost:8000/api/cart/")
       .then(response => {
         console.log({response})
         if (!response.data.error) {
