@@ -309,7 +309,7 @@ function ProductsPage() {
                         size="small"
                         sx={{ flexGrow: 1 }}
                         onClick={() => {
-                          setAddedProducts([...addedProducts, product.id]);
+                          setAddedProducts([...addedProducts, product]);
                           axios.post("http://localhost:8000/api/cart/", {
                             item: addedProducts,
                           });
