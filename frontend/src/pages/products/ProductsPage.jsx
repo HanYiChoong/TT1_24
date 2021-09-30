@@ -12,7 +12,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
-import {Search, SearchIconWrapper, StyledInputBase} from "../../components/SearchBar"
+import { Search, SearchIconWrapper, StyledInputBase } from "../../components/SearchBar"
+import axios from 'axios'
+
 
 // Remove once api available
 const mock_products = [
@@ -204,7 +206,12 @@ function ProductsPage() {
 
   useEffect(() => {
     // replace this with api
-    setProducts(mock_products)
+    axios
+      .get("http://localhost:8000/api/product")
+      .then(response => {
+        console.log({response})
+        setProducts(response.data)
+      })
   }, [])
 
   return (
@@ -238,8 +245,8 @@ function ProductsPage() {
           <Grid container spacing={4}>
             {products.filter((product) => {
               return (
-              searchValue ? product.title.toLowerCase().includes(searchValue.toLowerCase())
-              : product
+                searchValue ? product.title.toLowerCase().includes(searchValue.toLowerCase())
+                  : product
               )
             }).map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={3}>
