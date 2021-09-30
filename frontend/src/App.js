@@ -11,9 +11,7 @@ function App() {
       <Router>
         {/* <NavBar /> */}
         <div className="container">
-          <Route exact path="/" component={ProductsPage} />
-          {/* <Route exact path="/" component={RegisterPage} /> */}
-          {/* <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/login" render={() => (
             localStorage.usertoken && localStorage.usertoken !== 'undefined' ? (
               <Redirect to="/" />
@@ -44,7 +42,7 @@ function App() {
             ) : (
               <Redirect to="/login" />
             )
-          )} /> */}
+          )} />
         </div>
       </Router>
     </div>

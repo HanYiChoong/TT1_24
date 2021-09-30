@@ -126,7 +126,7 @@ function CartPage() {
                               {product.title}
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h2">
-                              ${product.price.toFixed(2)}
+                              ${product.price}
                             </Typography>
                             <Typography gutterBottom variant="h6" component="h2">
                               Qty: {product.qty}
