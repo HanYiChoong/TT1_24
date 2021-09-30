@@ -9,11 +9,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { Button, Card, CardContent, CardMedia } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 
 function CartPage() {
   const [data, setData] = useState([]);
-  const [totalPrice, setPrice] = useState(0);
+  let totalPrice = data.reduce((partial_sum, a) => partial_sum + (a.price * a.qty), 0);
   
   useEffect(() => {
     // const fetchData = async () => {
@@ -60,8 +63,6 @@ function CartPage() {
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "qty": 50
   },])
-
-    setPrice(data.reduce((partial_sum, a) => partial_sum + (a.price * a.qty), 0));
   }, []);
 
   const AppBar = styled(MuiAppBar, {
@@ -163,10 +164,13 @@ function CartPage() {
                             <Typography gutterBottom variant="h6" component="h2">
                               ${product.price.toFixed(2)}
                             </Typography>
-                            <Typography>
-                              {product.description}
+                            <Typography gutterBottom variant="h6" component="h2">
+                              Qty: {product.qty}
                             </Typography>
                           </CardContent>
+                          <CardActions>
+                            <Button size="small" sx={{ flexGrow: 1 }}><DeleteIcon /></Button>
+                          </CardActions>
                         </Card>
                       </Grid>
                     ))}
@@ -185,12 +189,12 @@ function CartPage() {
                     </Grid>
                       <Grid item xs={3}>
                         <Button>
-                          Empty Cart
+                          Empty Cart <DeleteForeverIcon />
                         </Button>
                       </Grid>
                       <Grid item xs={3}>
                         <Button>
-                          Checkout
+                          Checkout <PriceCheckIcon/>
                         </Button>
                     </Grid>
                 </Grid>
