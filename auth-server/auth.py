@@ -30,6 +30,10 @@ def register():
     password = bcrypt.generate_password_hash(request.get_json()['password']).decode('utf-8')
     created = datetime.utcnow()
 
+    check_exist = users.find_one({'email': email})
+    if check_exist:
+        return jsonify({"error":"Email already exists"})
+
     user_object = users.insert_one({
         'email': email,
         'password': password,
