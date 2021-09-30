@@ -1,4 +1,3 @@
-import './App.css';
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register'
 import ProductsPage from "./pages/products"
@@ -13,6 +12,7 @@ function App() {
             {/* <Route exact path="/" component={RegisterPage} /> */}
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/" component={ProductsPage} />
             {/* <Route exact path="/profile" render={() => (
               localStorage.usertoken && localStorage.usertoken !== 'undefined' ? (
                 <Profile />
