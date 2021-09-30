@@ -2,6 +2,7 @@ import LoginPage from './pages/login';
 import RegisterPage from './pages/register'
 import ProductsPage from "./pages/products"
 import CartContent from "./pages/Cart"
+import CheckoutPage from "./pages/checkout"
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 function App() {
@@ -30,7 +31,15 @@ function App() {
 
           <Route exact path="/cart" render={() => (
             localStorage.usertoken && localStorage.usertoken !== 'undefined' ? (
-              <CartContent  />
+              <CartContent />
+            ) : (
+              <Redirect to="/login" />
+            )
+          )} />
+
+          <Route exact path="/checkout" render={() => (
+            localStorage.usertoken && localStorage.usertoken !== 'undefined' ? (
+              <CheckoutPage />
             ) : (
               <Redirect to="/login" />
             )
