@@ -1,30 +1,27 @@
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Cart from "./cart/Cart";
+import LoginPage from './pages/login';
+import RegisterPage from './pages/register'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/cart">Cart</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <Switch>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+          {/* <NavBar /> */}
+          <div className="container">
+            {/* <Route exact path="/" component={RegisterPage} /> */}
+            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/login" component={LoginPage} />
+            {/* <Route exact path="/profile" render={() => (
+              localStorage.usertoken && localStorage.usertoken !== 'undefined' ? (
+                <Profile />
+              ) : (
+                <Redirect to="/" />
+              )
+            )} /> */}
+          </div>
+      </Router>
+    </div>
   );
 }
 
