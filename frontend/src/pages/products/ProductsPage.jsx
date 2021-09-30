@@ -14,7 +14,8 @@ import Container from '@mui/material/Container';
 import SearchIcon from '@mui/icons-material/Search';
 import {Search, SearchIconWrapper, StyledInputBase} from "../../components/SearchBar"
 
-const products = [
+// Remove once api available
+const mock_products = [
   {
       "id": 1,
       "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -199,6 +200,12 @@ const products = [
 
 function ProductsPage() {
   const [searchValue, setSearchValue] = useState('');
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // replace this with api
+    setProducts(mock_products)
+  }, [])
 
   return (
     <>
@@ -229,7 +236,7 @@ function ProductsPage() {
             {products.map((product) => (
               <Grid item key={product.id} xs={12} sm={6} md={3}>
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{ height: '100%', width: "100%", display: 'flex', flexDirection: 'column' }}
                 >
                   <CardMedia
                     component="img"
