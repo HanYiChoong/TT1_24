@@ -12,6 +12,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import IconButton from '@mui/material/IconButton';
 import {Search, SearchIconWrapper, StyledInputBase} from "../../components/SearchBar"
 
 // Remove once api available
@@ -199,7 +201,7 @@ const mock_products = [
 ]
 
 function ProductsPage() {
-  const [searchValue, setSearchValue] = useState('');
+  // const [searchValue, setSearchValue] = useState('');
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -215,7 +217,7 @@ function ProductsPage() {
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             Name of our app
           </Typography>
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -225,8 +227,11 @@ function ProductsPage() {
               value={searchValue}
               onChange={text => (setSearchValue(text.target.value))}
             />
-          </Search>
+          </Search> */}
           <Button color="inherit">Logout</Button>
+          <IconButton>
+            
+          </IconButton>
           <Button color="inherit">Cart</Button>
         </Toolbar>
       </AppBar>
