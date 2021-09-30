@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { Button, Card, CardContent, CardMedia } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function CartPage() {
   const [data, setData] = useState([]);
