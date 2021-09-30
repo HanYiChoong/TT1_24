@@ -2,6 +2,8 @@ import LoginPage from './pages/login';
 import RegisterPage from './pages/register'
 import ProductsPage from "./pages/products"
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import Cart from './cart/Cart';
+import CheckoutPage from './pages/Checkout';
 
 function App() {
   return (
@@ -16,6 +18,14 @@ function App() {
                 <Redirect to="/" />
               ) : (
                 <LoginPage />
+              )
+            )} />
+
+            <Route exact path="/checkout" render={() => (
+              localStorage.usertoken && localStorage.usertoken !== 'undefined' ? (
+                <CheckoutPage />
+              ) : (
+                <Redirect to="/login" />
               )
             )} />
 
